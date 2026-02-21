@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Her Body: The Strong Woman Blueprint — Premium Fitness Planner</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      /* Light palette from HerBody */
+      --paper: #FAF7F3;
+      --warm: #F5F0E8;
+      --surface: #EDE8DF;
+      --card: #FFFFFF;
+      --card2: #F9F5EF;
+      --ink: #1C1714;
+      --ink2: #2C2420;
+
+      /* Brand accents */
+      --rose: #B8624A;
+      --rose-lt: #D4917C;
+      --rose-dim: rgba(184, 98, 74, 0.10);
+      --rose-vdim: rgba(184, 98, 74, 0.06);
+      --gold: #B8883A;
+      --gold-lt: #D4AE6E;
+      --gold-dim: rgba(184, 136, 58, 0.10);
+      --sage: #6E9080;
+      --sage-lt: #98B8A8;
+      --sage-dim: rgba(110, 144, 128, 0.10);
+      --blush: #E8C8BC;
+      --mauve: #C4908A;
+
+      /* Borders & text */
+      --border: rgba(184, 98, 74, 0.25);
+      --border2: rgba(28, 23, 20, 0.14);
+      --muted: #5A504A;
+      --text-dim: rgba(28, 20, 16, 0.72);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      /* font-weight: 400;
+      overflow-x: hidden; */
+      line-height: 1.75;
+    }
+
+    /* grain texture overlay from HerBody */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--warm);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--rose);
+      border-radius: 2px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(250, 247, 243, 0.85);
+      /* adapted to light */
+      backdrop-filter: blur(5px);
+      padding: 1.0rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--rose);
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      transition: color 0.3s;
+      color: var(--ink2);
+    }
+
+    .nav-links a:hover {
+      color: var(--rose);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--rose);
+    }
+
+    /* Header / Hero adapted */
+    header {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--warm);
+      /* light adaptation */
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, var(--rose-dim) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .logo-container {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-img {
+      max-width: 210px;
+      height: auto;
+      filter: drop-shadow(0 0 20px var(--rose-dim));
+      border-radius: 15%;
+    }
+
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: 1.4rem;
+      opacity: 0.9;
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+      color: var(--ink2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      background: var(--rose);
+      color: var(--card);
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px var(--rose-dim);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px var(--rose-dim);
+      background: var(--rose-lt);
+    }
+
+    /* Sections */
+    section {
+      padding: 8rem 5% 6rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-family: 'Cormorant', serif;
+      font-size: 3.2rem;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: var(--rose);
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Showcase grid for problems */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s;
+      border: 1px solid var(--border2);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-content {
+      padding: 1.6rem;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: var(--rose);
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: var(--ink2);
+      font-size: 1rem;
+    }
+
+    /* Contact */
+    form {
+      max-width: 580px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 1rem 1.4rem;
+      background: var(--card2);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--muted);
+    }
+
+    button {
+      padding: 1.1rem;
+      background: var(--rose);
+      color: var(--card);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: var(--rose-lt);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--warm);
+      font-size: 0.95rem;
+      opacity: 0.7;
+      color: var(--ink2);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--warm);
+        padding: 2rem;
+        text-align: center;
+        gap: 1.8rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      section {
+        padding: 6rem 4% 4rem;
+      }
+
+      h2 {
+        font-size: 2.6rem;
+      }
+    }
+
+    /* Preloader adapted */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--warm);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s ease-out;
+    }
+
+    .loader-content {
+      text-align: center;
+      position: relative;
+    }
+
+    .orbit-loader {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      inset: 0;
+      border: 3px solid transparent;
+      border-top-color: var(--rose);
+      border-radius: 50%;
+      animation: spin 3s linear infinite;
+      opacity: 0.7;
+    }
+
+    .loading-text {
+      color: var(--rose);
+      font-family: 'Cormorant', serif;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      opacity: 0.9;
+      animation: pulse-text 2s infinite ease-in-out;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse-text {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    #preloader.fade-out {
+      opacity: 0;
+    }
+
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .lang-selector select {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      color: var(--ink2);
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="orbit-loader">
+        <div class="orbit-ring"></div>
+      </div>
+      <p class="loading-text" data-en="Loading..." data-hr="Učitavanje..." data-de="Laden...">Loading...</p>
+    </div>
+  </div>
+
+  <nav>
+    <div class="lang-selector">
+      <label for="lang">Language</label>
+      <select id="lang" onchange="changeLanguage(this.value)">
+        <option value="en" selected>EN</option>
+        <option value="hr">HR</option>
+        <option value="de">DE</option>
+      </select>
+    </div>
+
+    <div class="nav-logo" data-en="Her Body" data-hr="Her Body" data-de="Her Body"></div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#why" data-en="Why Her Body" data-hr="Zašto Her Body" data-de="Warum Her Body">Why Her Body</a>
+      <a href="#purchase" data-en="Get Yours" data-hr="Nabavi svoj" data-de="Hol dir deinen">Get Yours</a>
+    </div>
+  </nav>
+
+  <header id="hero">
+    <div class="hero-content">
+      <div class="logo-container">
+        <img src="images/HerBody_logo.png" alt="Her Body Logo" class="logo-img">
+      </div>
+      <h1 data-en="Her Body: The Strong Woman Blueprint" data-hr="Her Body: Plavi otisak jake žene"
+        data-de="Her Body: Der Blueprint der starken Frau">Her Body: The Strong Woman Blueprint</h1>
+      <p class="tagline" data-en="Premium Fitness Planner for Women • Personalized • Effective • Empowering"
+        data-hr="Premium planer fitnessa za žene • Personalizirano • Učinkovito • Osnažujuće"
+        data-de="Premium Fitness-Planer für Frauen • Personalisiert • Effektiv • Ermächtigend">
+        Premium Fitness Planner for Women • Personalized • Effective • Empowering
+      </p>
+      <a href="#purchase" class="btn" data-en="Get the Planner →" data-hr="Nabavi planer →" data-de="Planer holen →">Get
+        the Planner →</a>
+    </div>
+  </header>
+
+  <section id="why">
+    <h2 data-en="Why Her Body is the Perfect Planner for You" data-hr="Zašto je Her Body savršen planer za tebe"
+      data-de="Warum Her Body der perfekte Planer für dich ist">
+      Why Her Body is the Perfect Planner for You
+    </h2>
+
+    <div class="showcase-grid">
+
+      <!-- Problem 1 -->
+      <div class="card">
+        <div class="card-content">
+          <h3 data-en="Problem 1 — Unsure Where to Start" data-hr="Problem 1 — Ne znaš odakle početi"
+            data-de="Problem 1 — Unsicher, wo anfangen?">
+            Problem 1 — Unsure Where to Start
+          </h3>
+          <p data-en="Most plans assume you already know what you're doing. Her Body starts with a quiz to place you in the right phase — before a single workout."
+            data-hr="Većina planova pretpostavlja da već znaš što radiš. Her Body počinje kvizom koji te smješta u pravu fazu — prije ijednog treninga."
+            data-de="Die meisten Pläne gehen davon aus, dass du schon weißt, was du tust. Her Body beginnt mit einem Quiz, das dich in die richtige Phase einordnet — bevor du einen einzigen Workout machst.">
+            Most plans assume you already know what you're doing...
+          </p>
+        </div>
+      </div>
+
+      <!-- Problem 2 -->
+      <div class="card">
+        <div class="card-content">
+          <h3 data-en="Problem 2 — Generic Plans Ignore Women's Bodies"
+            data-hr="Problem 2 — Generički planovi ignoriraju žensko tijelo"
+            data-de="Problem 2 — Generische Pläne ignorieren Frauenkörper">
+            Problem 2 — Generic Plans Ignore Women's Bodies
+          </h3>
+          <p data-en="Hormones, menstrual cycle, cortisol, and sleep affect training completely differently than in men. This planner builds it in."
+            data-hr="Hormoni, menstrualni ciklus, kortizol i san utječu na trening potpuno drugačije nego kod muškaraca. Ovaj planer to ugrađuje."
+            data-de="Hormone, Zyklus, Cortisol und Schlaf beeinflussen das Training bei Frauen völlig anders als bei Männern. Dieser Planer berücksichtigt das von Anfang an.">
+            Hormones, menstrual cycle...
+          </p>
+        </div>
+      </div>
+
+      <!-- Problem 3 -->
+      <div class="card">
+        <div class="card-content">
+          <h3 data-en="Problem 3 — Guilt Destroys Consistency"
+            data-hr="Problem 3 — Osjećaj krivnje uništava dosljednost"
+            data-de="Problem 3 — Schuldgefühle zerstören Kontinuität">
+            Problem 3 — Guilt Destroys Consistency
+          </h3>
+          <p data-en="Missed workouts lead to shame. Her Body includes mindset chapters to break the cycle."
+            data-hr="Propušteni treninzi vode u sram i odustajanje. Her Body uključuje poglavlja o mindsetu kako bi prekinuo taj ciklus."
+            data-de="Verpasste Workouts führen oft zu Scham und Aufgeben. Her Body enthält Mindset-Kapitel, um diesen Kreislauf zu durchbrechen.">
+            Missed workouts lead to shame...
+          </p>
+        </div>
+      </div>
+
+      <!-- Problem 4 -->
+      <div class="card">
+        <div class="card-content">
+          <h3 data-en="Problem 4 — Confusion About Nutrition & Supplements"
+            data-hr="Problem 4 — Zbrka oko prehrane i suplemenata"
+            data-de="Problem 4 — Verwirrung bei Ernährung & Supplements">
+            Problem 4 — Confusion About Nutrition & Supplements
+          </h3>
+          <p data-en="Industry lies to women. Get a calorie calculator, meal timing guide, and honest supplement advice."
+            data-hr="Industrija laže ženama. Dobivaš kalkulator kalorija, vodič za tajming obroka i iskren vodič za suplemente."
+            data-de="Die Industrie belügt Frauen ständig. Du bekommst einen echten Kalorienrechner, Mahlzeiten-Timing-Guide und ehrlichen Supplement-Ratgeber.">
+            Industry lies to women...
+          </p>
+        </div>
+      </div>
+
+      <!-- Problem 5 -->
+      <div class="card">
+        <div class="card-content">
+          <h3 data-en="Problem 5 — Gym Anxiety" data-hr="Problem 5 — Anksioznost u teretani"
+            data-de="Problem 5 — Angst vor dem Fitnessstudio">
+            Problem 5 — Gym Anxiety
+          </h3>
+          <p data-en="The gym feels not for them. Anxiety guide, beginner track, glossary, and gym bag checklist remove barriers."
+            data-hr="Teretana se čini kao da nije za njih. Vodič za anksioznost, početnički program, rječnik i lista za torbu u teretani uklanjaju sve prepreke."
+            data-de="Das Gym fühlt sich nicht für sie an. Angst-Guide, Einsteiger-Track, Glossar und Gymtaschen-Checkliste beseitigen jede Hürde.">
+            The gym feels not for them...
+          </p>
+        </div>
+      </div>
+
+      <!-- Problem 6 -->
+      <div class="card">
+        <div class="card-content">
+          <h3 data-en="Problem 6 — No Tool for Hard Days" data-hr="Problem 6 — Nema alata za teške dane"
+            data-de="Problem 6 — Kein Tool für harte Tage">
+            Problem 6 — No Tool for Hard Days
+          </h3>
+          <p data-en="Other planners stop at the worst week. Her Body tells you exactly what to do when overwhelmed."
+            data-hr="Drugi planeri staju u najgoroj fazi. Her Body te prati i točno ti kaže što dalje raditi kad si preopterećena."
+            data-de="Andere Planer hören bei der schlimmsten Woche auf. Her Body begleitet dich und sagt dir genau, was du tun sollst, wenn du überfordert bist.">
+            Other planners stop at the worst week...
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="max-width:780px;margin:3rem auto 0;text-align:center;font-size:1.2rem;font-style:italic;color:var(--rose);"
+      data-en="In one sentence: Her Body is the only fitness planner that trains both the body and the mind — because a woman who understands herself never actually quits."
+      data-hr="U jednoj rečenici: Her Body je jedini fitness planer koji trenira i tijelo i um — jer žena koja razumije sebe nikad zapravo ne odustane."
+      data-de="In einem Satz: Her Body ist der einzige Fitness-Planer, der Körper und Geist trainiert — denn eine Frau, die sich selbst versteht, gibt nie wirklich auf.">
+      In one sentence: Her Body is the only...
+    </p>
+  </section>
+
+  <section id="purchase" style="background:var(--warm);">
+    <h2 data-en="Get Your Planner" data-hr="Nabavi svoj planer" data-de="Deinen Planer holen">Get Your Planner</h2>
+    <p style="text-align:center" data-en="Purchase now and receive the full personalized planner via email instantly."
+      data-hr="Kupi sada i odmah primi personalizirani planer e-poštom."
+      data-de="Jetzt kaufen und den vollständigen personalisierten Planer sofort per E-Mail erhalten.">
+      Purchase now and receive...
+    </p>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" data-en-placeholder="Your Name" data-hr-placeholder="Tvoje ime"
+        data-de-placeholder="Dein Name" placeholder="Your Name" required>
+      <input type="email" name="email" data-en-placeholder="Your Email" data-hr-placeholder="Tvoja e-pošta"
+        data-de-placeholder="Deine E-Mail" placeholder="Your Email" required>
+      <textarea name="message" rows="5" data-en-placeholder="Any notes or questions... (optional)"
+        data-hr-placeholder="Napomene ili pitanja... (opcionalno)"
+        data-de-placeholder="Anmerkungen oder Fragen... (optional)"
+        placeholder="Any notes or questions... (optional)"></textarea>
+      <button type="submit" data-en="Purchase & Receive via Email" data-hr="Kupi i primi e-poštom"
+        data-de="Kaufen & per E-Mail erhalten">Purchase & Receive via Email</button>
+    </form>
+  </section>
+
+  <footer data-en="Her Body © 2026 | Empowering Women's Fitness"
+    data-hr="Her Body © 2026 | Osnaživanje fitnessa za žene"
+    data-de="Her Body © 2026 | Ermächtigung von Frauen im Fitness">Her Body © 2026 | Empowering Women's Fitness</footer>
+
+  <script>
+    const translations = {
+      en: {},
+      hr: {},
+      de: {}
+    };
+
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = el.getAttribute(`data-${lang}`) || el.getAttribute('data-en');
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = el.getAttribute(`data-${lang}-placeholder`) || el.getAttribute('data-en-placeholder');
+        } else if (el.textContent.trim()) {
+          el.textContent = text;
+        }
+      });
+
+      // Update loading text if still visible
+      const loading = document.querySelector('.loading-text');
+      if (loading) loading.textContent = loading.getAttribute(`data-${lang}`);
+
+      console.log(`Switched to: ${lang}`);
+    }
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      // Pre-set placeholders for current language
+      changeLanguage('en');
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        setTimeout(() => {
+          preloader.classList.add('fade-out');
+          setTimeout(() => preloader.remove(), 1200);
+        }, 500);
+      }
+    });
+  </script>
+</body>
+
+</html>
